@@ -4,7 +4,6 @@
   <img src="https://user-images.githubusercontent.com/1800887/157764752-e415f6af-419e-4dcb-aadf-fada09280356.jpeg" />
 </p>
 
-
 ### Table of Contents
 - [Basics](#basics)
 - [Monorepo Pages](#pages)
@@ -18,6 +17,22 @@
   - [reducers](#reducers)
   - [selectors](#selectors)
 - [Interface vs Type vs Class](#interface)
+  - [Interface declarations](#interface)
+  - [Interface with multiple types](#interfacemultiple)
+  - [Types](#types)
+    - [Types alias](#types)
+    - [Tuples](#tuples)
+    - [Conditional types](#conditionaltypes)
+    - [Mapped types](#mappedtypes)
+    - [Exclude](#exclude)
+    - [Extract](#extract)
+    - [Instance type](#instancetype)
+  - [Class](#class)
+  - [Types or Interfaces?](#typequestion)
+- [Other types](#othertypes)
+- [Functions](#functions)
+- [Unions](#unions)
+- [Cheat sheet](#cheatsheet)
 
 <a name="basics" />
 
@@ -227,6 +242,8 @@ class MyClass implements Child {
 
 - Interfaces can also **extend** other **interfaces** or **classes** using the `extends` keyword in order to compose more complex types out of simple types
 
+<a name="interfacemultiple" />
+
 #### Interface with multiple types
 
 ```tsx
@@ -238,8 +255,9 @@ interface Pair<T1, T2> {
 const myConst: Pair<number, string>; // {first, second} where first is a number and the second a string
 ```
 
-## Types
+<a name="types" />
 
+## Types
 #### Type alias
 
 ```tsx
@@ -260,6 +278,8 @@ const point: Point = { x: 1, y: 2 };
 type PtValProp = keyof typeof point; // 'x' | 'y'
 ```
 
+<a name="tuples" />
+
 #### Basic tuples
 
 ```tsx
@@ -278,6 +298,8 @@ let myTuple: NumbersAndStrings;
 myTuple = [1, 2, 'test1', 'test2'];
 ```
 
+<a name="conditionaltypes" />
+
 #### Conditional types
 
 ```tsx
@@ -290,6 +312,8 @@ equivalent to (if T is Number)
 `(value: number) => number`
 equivalent to (if T is String)
 `(value: string) => string`
+
+<a name="mappedtypes" />
 
 #### Conditional mapped types
 
@@ -309,13 +333,19 @@ type PersonStrings = StringProps<Person>;
 // PersonStrings is "firstName" | "lastName"
 ```
 
+<a name="exclude" />
+
 #### Exclude
 
 `type Excluded = Exclude<string | number, string>;` equivalent to `number`
 
+<a name="extract" />
+
 #### Extract
 
 `type Extracted = Extract<string | number, string>;` equivalent to `string`
+
+<a name="instancetype" />
 
 #### InstanceType
 
@@ -329,6 +359,8 @@ is equivalent to
 ```
 Renderer
 ```
+
+<a name="class" />
 
 ## Class
 
@@ -365,6 +397,8 @@ class Child extends Parent implements Child, OtherChild {
   public overloadedMethod(argument: CommonT): CommonReturnT {}
 }
 ```
+
+<a name="typequestion" />
 
 ## Types or Interfaces?
 
@@ -407,6 +441,8 @@ It's a nuanced topic, don't get too hung up on it. Here's a handy table:
 
 ![typesEquivalent](https://user-images.githubusercontent.com/1800887/153990739-6420b14b-9df4-483c-9b7f-b35e11a364df.png)
 
+<a name="othertypes" />
+
 # Other types
 
 ## Arrays and tuples
@@ -435,6 +471,8 @@ enum Colors {
   Blue = '#0000FF',
 }
 ```
+
+<a name="functions" />
 
 ## Functions
 
@@ -471,6 +509,8 @@ function myFunction(a: string | number): string | number {
     ...
 }
 ```
+
+<a name="unions" />
 
 ## Union and intersection types
 
@@ -526,6 +566,8 @@ declare module "foo" {
     export class Bar { ... }
 }
 ```
+
+<a name="cheatsheet" />
 
 ## Handbook Cheat sheet
 
