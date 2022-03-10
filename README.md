@@ -1,20 +1,36 @@
 
-# TypeScrypt-cheatsheet
+# Monorepo TypeScrypt-cheatsheet
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/1800887/157764752-e415f6af-419e-4dcb-aadf-fada09280356.jpeg" />
+</p>
+
+
 ### Table of Contents
 - [Basics](#basics)
 - [Monorepo Pages](#pages)
+  - [getInitialProps definitions](#initialprops)
+  - [Component declaration](#component-declaration)
+- [React Hooks types](#hooks)
+  - [useState](#usestate)
+  - [useRef](#useref)
+- [Redux](#redux)
+  - [actions](#redux)
+  - [reducers](#reducers)
+  - [selectors](#selectors)
 - [Interface vs Type vs Class](#interface)
 
-<a name="basics"/>
-## Basics
+<a name="basics" />
 
+## Basics
 - Avoid using `any`, `object` or `unknown` types.
 
-<a name="pages"/>
+<a name="pages" />
+
 ## Pages
 
-### getInitialProps function
+<a name="initialprops" />
 
+### getInitialProps function
 - Always declare context type with `Context`, `AppContext` or `NextPageContext`
 
 ```typescript
@@ -34,6 +50,8 @@ Promise<ModelName>
 PageName.getInitialProps = async (ctx: Context): Promise<InitialProps<PageModel>> {}
 ```
 
+<a name="component-declaration" />
+
 ### Component declarations [(See Interfaces vs types)](#Interfaces)
 - Always declare prop types for custom props types and without inheritance
 
@@ -47,7 +65,11 @@ type PropType = {
 const ComponentName = (props: PropType): ReactElement
 ```
 
+<a name="hooks" />
+
 ### Hooks
+
+<a name="usestate" />
 
 #### useState
 - Always declare the type when creating a new state
@@ -62,6 +84,8 @@ const [user, setUser] = useState<User | null>(null);
 // later...
 setUser(newUser);
 ```
+
+<a name="useref" />
 
 #### useRef
 
@@ -85,6 +109,8 @@ function Foo() {
   return <div ref={divRef}>etc</div>;
 }
 ```
+
+<a name="redux" />
 
 ## Redux
 ### Actions
@@ -114,6 +140,8 @@ const openMenuAction = (): MenuOpenAction => ({
   }
 }); 
 ```
+
+<a name="reducers" />
 
 ### Reducers
 - Declare state type / contract
@@ -159,7 +187,8 @@ const selectMenuState = (state: StateType): Response => get(state, 'menu', {} as
 ```
 
 <a name="interface" />
-##Interfaces
+
+## Interfaces
 
 #### Interface declaration
 
