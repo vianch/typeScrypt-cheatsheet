@@ -38,6 +38,13 @@
 
 ## Basics
 - Avoid using `any`, `object` or `unknown` types.
+- In shared packages we can export types from the `externalModules` folder that we want to import into other projects
+```typescript
+// TodayTix component file:
+import { CookieBannerLabels } from '@todaytix/shared/src/types';
+
+const Labels: CookieBannerLabels = {} as CookieBannerLabels;
+```
 
 <a name="pages" />
 
@@ -46,23 +53,25 @@
 <a name="initialprops" />
 
 ### getInitialProps function
-- Always declare context type with `Context`, `AppContext` or `NextPageContext`
+- Always declare context type with `TTNextPageContext`, `AppContext` or `NextPageContext`
 
 ```typescript
-PageName.getInitialProps = async (ctx: Context)
+PageName.getInitialProps = async (ctx: TTNextPageContext)
 ```
 
 - Always return with the type
 
 ```typescript
 
-Promise<{ props: PageProps<ModelName> }>
-Promise<InitialProps<PageModel>>
-Promise<InitialProps<PageProps<ModelName>>>
-Promise<ModelName>
+Promise < { props: PageProps<ModelName> } >
+Promise < InitialProps < PageModel >>
+Promise < InitialProps < PageProps < ModelName >>>
+Promise < ModelName >
 
 // Eg:
-PageName.getInitialProps = async (ctx: Context): Promise<InitialProps<PageModel>> {}
+PageName.getInitialProps = async (ctx: TTNextPageContext): Promise<InitialProps<PageModel>>
+{
+}
 ```
 
 <a name="component-declaration" />
