@@ -1,5 +1,5 @@
 
-# Monorepo TypeScrypt-cheatsheet
+# TypeScrypt-cheatsheet
 <p align="center">
   <img src="https://user-images.githubusercontent.com/1800887/157764752-e415f6af-419e-4dcb-aadf-fada09280356.jpeg" />
 </p>
